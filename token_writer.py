@@ -1,3 +1,7 @@
+"""Tools for streaming tokens as bytes into a big file,
+and then loading them back into a memory mapped numpy array.
+e.g. to tokenize a whole corpus, then access the tokens.
+"""
 import os
 import tempfile
 from pathlib import Path
@@ -46,7 +50,7 @@ if __name__ == "__main__":
             writer.write(np.arange(10, dtype=DTYPE))
             writer.write(np.arange(10, dtype=DTYPE) + 10)
             writer.write(np.arange(10, dtype=DTYPE) + 20)
-        # Test can load
+        # Check can load
         tokens = load_tokens(tmp.name)
         assert np.all(tokens == np.arange(30, dtype=DTYPE))
         print("Successfully streamed tokens to file and loaded them")
