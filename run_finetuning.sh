@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-RUN_PATH="<path to run directory>"  # <- you need to change this
+RUN_PATH="data/run_20230719-232302"  # <- you need to change this
 mkdir "${RUN_PATH}/glue"
 
 for TASK_NAME in stsb mnli rte qqp mrpc cola sst2 qnli

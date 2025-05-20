@@ -27,6 +27,7 @@ import datasets
 import evaluate
 import numpy as np
 from datasets import load_dataset
+import torch
 
 import transformers
 from transformers import (
@@ -45,6 +46,7 @@ from transformers import (
 from transformers.trainer_utils import get_last_checkpoint
 
 
+print("torch.cuda.is_available():", torch.cuda.is_available())
 
 task_to_keys = {
     "cola": ("sentence", None),
@@ -363,7 +365,7 @@ def main():
     from pathlib import Path
     from transformers import BertTokenizerFast
 
-    tokenizer_path = Path(model_args.model_name_or_path).parent / "tokenizer.json"
+    tokenizer_path = "tokenizer.json"
     tokenizer = BertTokenizerFast(tokenizer_file=str(tokenizer_path))
     ####
     ####
